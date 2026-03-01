@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  // Colors from the image
   static const Color background = Color(0xFF19202E);
   static const Color sidebarBackground = Color(0xFF222B3B);
   static const Color cardBackground = Color(0xFF222B3B);
