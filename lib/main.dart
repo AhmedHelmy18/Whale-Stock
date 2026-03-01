@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whale_stock/theme/app_theme.dart';
-import 'package:whale_stock/viewmodels/dashboard_viewmodel.dart';
-import 'package:whale_stock/views/dashboard_screen.dart';
+import 'theme/app_theme.dart';
+import 'views/dashboard_screen.dart';
+import 'viewmodels/dashboard_viewmodel.dart';
+import 'viewmodels/reports_viewmodel.dart';
 
 void main() {
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => DashboardViewModel()),
+        ChangeNotifierProvider(create: (_) => ReportsViewModel()),
       ],
       child: const MyApp(),
     ),

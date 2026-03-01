@@ -1,13 +1,12 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whale_stock/theme/app_theme.dart';
-import 'package:whale_stock/viewmodels/dashboard_viewmodel.dart';
-import 'package:whale_stock/widgets/kpi_card.dart';
-import 'package:whale_stock/widgets/recent_activity_table.dart';
-import 'package:whale_stock/widgets/sidebar_menu.dart';
-import 'package:whale_stock/widgets/top_header.dart';
-
+import 'package:fl_chart/fl_chart.dart';
+import '../viewmodels/dashboard_viewmodel.dart';
+import '../widgets/kpi_card.dart';
+import '../widgets/sidebar_menu.dart';
+import '../widgets/top_header.dart';
+import '../widgets/recent_activity_table.dart';
+import '../theme/app_theme.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});

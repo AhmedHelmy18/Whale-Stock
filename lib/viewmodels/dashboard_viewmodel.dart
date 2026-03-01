@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:whale_stock/models/inventory_models.dart';
+import '../models/inventory_models.dart';
 
 class DashboardViewModel extends ChangeNotifier {
   List<KpiData> get topKpis => [
