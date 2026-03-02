@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
+import 'package:whale_stock/core/theme/app_theme.dart';
 
 class TopHeader extends StatelessWidget {
   const TopHeader({super.key});
@@ -27,14 +27,16 @@ class TopHeader extends StatelessWidget {
           Row(
             children: [
               IconButton(
-                icon: const Icon(Icons.account_circle_outlined, color: AppTheme.textSecondary),
+                icon: const Icon(Icons.account_circle_outlined,
+                    color: AppTheme.textSecondary),
                 onPressed: () {},
               ),
               const SizedBox(width: 8),
               Stack(
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.notifications_none_outlined, color: AppTheme.textSecondary),
+                    icon: const Icon(Icons.notifications_none_outlined,
+                        color: AppTheme.textSecondary),
                     onPressed: () {},
                   ),
                   Positioned(
@@ -58,14 +60,16 @@ class TopHeader extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: AppTheme.sidebarBackground,
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: AppTheme.border),
+                  border:
+                      Border.all(color: AppTheme.border.withValues(alpha: 0.5)),
                 ),
                 child: const TextField(
                   style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
                   decoration: InputDecoration(
                     hintText: 'Search',
                     hintStyle: TextStyle(color: AppTheme.textSecondary),
-                    prefixIcon: Icon(Icons.search, color: AppTheme.textSecondary, size: 20),
+                    prefixIcon: Icon(Icons.search,
+                        color: AppTheme.textSecondary, size: 20),
                     border: InputBorder.none,
                     contentPadding: EdgeInsets.symmetric(vertical: 10),
                   ),

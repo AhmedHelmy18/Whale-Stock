@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
+import 'package:whale_stock/core/theme/app_theme.dart';
 
 class SidebarMenu extends StatelessWidget {
   const SidebarMenu({super.key});
@@ -13,7 +13,8 @@ class SidebarMenu extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 24),
-          _buildMenuItem(Icons.grid_view_rounded, 'Dashboard', isSelected: true),
+          _buildMenuItem(Icons.grid_view_rounded, 'Dashboard',
+              isSelected: true),
           _buildMenuItem(Icons.inventory_2_outlined, 'Inventory'),
           _buildMenuItem(Icons.receipt_long_outlined, 'Orders'),
           _buildMenuItem(Icons.bar_chart_outlined, 'Reports'),
@@ -26,7 +27,8 @@ class SidebarMenu extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuItem(IconData icon, String title, {bool isSelected = false}) {
+  Widget _buildMenuItem(IconData icon, String title,
+      {bool isSelected = false}) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       decoration: isSelected

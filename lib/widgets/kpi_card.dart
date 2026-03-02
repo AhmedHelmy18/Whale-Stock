@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/inventory_models.dart';
-import '../theme/app_theme.dart';
+import 'package:whale_stock/models/inventory_models.dart';
+import 'package:whale_stock/core/theme/app_theme.dart';
 
 class KpiCard extends StatelessWidget {
   final KpiData kpi;
@@ -45,7 +45,8 @@ class KpiCard extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: (isAlert ? AppTheme.alertRed : AppTheme.primaryTeal).withValues(alpha: 0.1),
+                color: (isAlert ? AppTheme.alertRed : AppTheme.primaryTeal)
+                    .withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Icon(
