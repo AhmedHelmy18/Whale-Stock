@@ -127,40 +127,36 @@ class DashboardScreen extends StatelessWidget {
                                 const SizedBox(width: 15),
                                 Expanded(
                                   flex: 1,
-                                  child: SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: viewModel
-                                          .categoryDistribution.entries
-                                          .map((entry) {
-                                        final index = viewModel
-                                                .categoryDistribution.keys
-                                                .toList()
-                                                .indexOf(entry.key) %
-                                            10;
-                                        final colors = [
-                                          Colors.blue,
-                                          Colors.green,
-                                          Colors.orange,
-                                          Colors.red,
-                                          Colors.purple,
-                                          Colors.teal,
-                                          Colors.indigo,
-                                          Colors.pink,
-                                          Colors.amber,
-                                          Colors.cyan,
-                                        ];
-                                        return LegendItem(
-                                          color: colors[index],
-                                          label: entry.key,
-                                          value: entry.value.toString(),
-                                        );
-                                      }).toList(),
-                                    ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: viewModel
+                                        .categoryDistribution.entries
+                                        .map((entry) {
+                                      final index = viewModel
+                                              .categoryDistribution.keys
+                                              .toList()
+                                              .indexOf(entry.key) %
+                                          10;
+                                      final colors = [
+                                        Colors.blue,
+                                        Colors.green,
+                                        Colors.orange,
+                                        Colors.red,
+                                        Colors.purple,
+                                        Colors.teal,
+                                        Colors.indigo,
+                                        Colors.pink,
+                                        Colors.amber,
+                                        Colors.cyan,
+                                      ];
+                                      return LegendItem(
+                                        color: colors[index],
+                                        label: entry.key,
+                                        value: entry.value.toString(),
+                                      );
+                                    }).toList(),
                                   ),
                                 ),
                               ],

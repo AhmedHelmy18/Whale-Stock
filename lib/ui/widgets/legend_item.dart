@@ -27,10 +27,14 @@ class LegendItem extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8),
-          const SizedBox(width: 8),
-          Text(
-            label,
-            style: const TextStyle(fontSize: 12),
+          Expanded(
+            child: Text(
+              label,
+              style: const TextStyle(fontSize: 12),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              softWrap: false,
+            ),
           ),
           if (value != null) ...[
             const SizedBox(width: 8),
@@ -41,6 +45,7 @@ class LegendItem extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.end,
+              maxLines: 1,
             ),
           ],
         ],
