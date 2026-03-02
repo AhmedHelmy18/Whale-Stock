@@ -99,12 +99,7 @@ class _AddEditProductModalState extends State<AddEditProductModal> {
               suffixText: 'Auto-generated',
             ),
             const SizedBox(height: 16),
-            _buildDropdownField('Category', [
-              'Electronics',
-              'Raw Materials',
-              'Finished Goods',
-              'Packaging'
-            ]),
+            _buildDropdownField('Category'),
             const SizedBox(height: 16),
             _buildTextField('Supplier', controller: _supplierController),
             const SizedBox(height: 16),
@@ -214,7 +209,7 @@ class _AddEditProductModalState extends State<AddEditProductModal> {
     );
   }
 
-  Widget _buildDropdownField(String label, List<String> items) {
+  Widget _buildDropdownField(String label) {
     return Consumer<InventoryViewModel>(
       builder: (context, viewModel, child) {
         final categories = viewModel.categories;
@@ -226,41 +221,84 @@ class _AddEditProductModalState extends State<AddEditProductModal> {
               style: TextStyle(color: AppTheme.textSecondary, fontSize: 12),
             ),
             const SizedBox(height: 8),
-            DropdownButtonFormField<String>(
-              initialValue: _selectedCategory ??
-                  (categories.isNotEmpty ? categories.first.id : null),
-              dropdownColor: AppTheme.background,
-              style: const TextStyle(color: Colors.white),
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: AppTheme.background,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: const BorderSide(color: AppTheme.primaryTeal),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: const BorderSide(color: AppTheme.primaryTeal),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: const BorderSide(color: AppTheme.primaryTeal),
-                ),
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              ),
-              icon: const Icon(Icons.arrow_drop_down,
-                  color: AppTheme.primaryTeal),
-              items: categories.map((cat) {
-                return DropdownMenuItem<String>(
-                  value: cat.id,
-                  child: Text(cat.name),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                return PopupMenuButton<String>(
+                  offset: const Offset(0, 48),
+                  color: AppTheme.cardBackground,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    side: const BorderSide(color: AppTheme.border, width: 0.5),
+                  ),
+                  constraints: BoxConstraints(
+                    minWidth: constraints.maxWidth,
+                    maxWidth: constraints.maxWidth,
+                    maxHeight: 300,
+                  ),
+                  onSelected: (String newValue) {
+                    setState(() {
+                      _selectedCategory = newValue;
+                    });
+                  },
+                  itemBuilder: (BuildContext context) {
+                    final List<PopupMenuEntry<String>> items = [];
+                    for (int i = 0; i < categories.length; i++) {
+                      items.add(
+                        PopupMenuItem<String>(
+                          value: categories[i].id,
+                          child: Text(
+                            categories[i].name,
+                            style: const TextStyle(fontSize: 14),
+                          ),
+                        ),
+                      );
+                      if (i < categories.length - 1) {
+                        items.add(
+                          const PopupMenuDivider(height: 1),
+                        );
+                      }
+                    }
+                    return items;
+                  },
+                  child: InputDecorator(
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: AppTheme.background,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(color: AppTheme.border),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(color: AppTheme.border),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide:
+                            const BorderSide(color: AppTheme.primaryTeal),
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
+                      suffixIcon: const Icon(Icons.arrow_drop_down,
+                          color: AppTheme.primaryTeal),
+                    ),
+                    child: Text(
+                      categories
+                          .firstWhere(
+                              (cat) =>
+                                  cat.id ==
+                                  (_selectedCategory ??
+                                      (categories.isNotEmpty
+                                          ? categories.first.id
+                                          : '')),
+                              orElse: () => categories.first)
+                          .name,
+                      style: const TextStyle(color: Colors.white, fontSize: 14),
+                    ),
+                  ),
                 );
-              }).toList(),
-              onChanged: (newValue) {
-                setState(() {
-                  _selectedCategory = newValue;
-                });
               },
             ),
           ],

@@ -60,13 +60,9 @@ class DashboardScreen extends StatelessWidget {
                           borderData: FlBorderData(show: false),
                           lineBarsData: [
                             LineChartBarData(
-                              spots: [
-                                const FlSpot(0, 3),
-                                const FlSpot(2, 2),
-                                const FlSpot(4, 5),
-                                const FlSpot(6, 3),
-                                const FlSpot(8, 4),
-                              ],
+                              spots: viewModel.inventoryGrowthData.isEmpty
+                                  ? [const FlSpot(0, 0)]
+                                  : viewModel.inventoryGrowthData,
                               isCurved: true,
                               color: Theme.of(context).primaryColor,
                               barWidth: 4,
@@ -93,7 +89,7 @@ class DashboardScreen extends StatelessWidget {
                           : Row(
                               children: [
                                 Expanded(
-                                  flex: 2,
+                                  flex: 1,
                                   child: PieChart(
                                     PieChartData(
                                       sectionsSpace: 2,
@@ -105,7 +101,7 @@ class DashboardScreen extends StatelessWidget {
                                                 .categoryDistribution.keys
                                                 .toList()
                                                 .indexOf(entry.key) %
-                                            6;
+                                            10;
                                         final colors = [
                                           Colors.blue,
                                           Colors.green,
@@ -113,6 +109,10 @@ class DashboardScreen extends StatelessWidget {
                                           Colors.red,
                                           Colors.purple,
                                           Colors.teal,
+                                          Colors.indigo,
+                                          Colors.pink,
+                                          Colors.amber,
+                                          Colors.cyan,
                                         ];
                                         return PieChartSectionData(
                                           value: entry.value.toDouble(),
@@ -124,9 +124,11 @@ class DashboardScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(width: 10),
+                                const SizedBox(width: 15),
                                 Expanded(
+                                  flex: 1,
                                   child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -139,7 +141,7 @@ class DashboardScreen extends StatelessWidget {
                                                 .categoryDistribution.keys
                                                 .toList()
                                                 .indexOf(entry.key) %
-                                            6;
+                                            10;
                                         final colors = [
                                           Colors.blue,
                                           Colors.green,
@@ -147,6 +149,10 @@ class DashboardScreen extends StatelessWidget {
                                           Colors.red,
                                           Colors.purple,
                                           Colors.teal,
+                                          Colors.indigo,
+                                          Colors.pink,
+                                          Colors.amber,
+                                          Colors.cyan,
                                         ];
                                         return LegendItem(
                                           color: colors[index],

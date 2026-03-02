@@ -20,14 +20,21 @@ class InventoryRepository {
     await Hive.openBox<Category>(categoryBoxName);
     await Hive.openBox<StockMovement>(movementBoxName);
 
-    if (_categoryBox.isEmpty) {
-      final defaults = [
-        Category(id: 'electronics', name: 'Electronics'),
-        Category(id: 'raw-materials', name: 'Raw Materials'),
-        Category(id: 'finished-goods', name: 'Finished Goods'),
-        Category(id: 'packaging', name: 'Packaging'),
-      ];
-      for (var cat in defaults) {
+    final defaults = [
+      Category(id: 'electronics', name: 'Electronics'),
+      Category(id: 'raw-materials', name: 'Raw Materials'),
+      Category(id: 'finished-goods', name: 'Finished Goods'),
+      Category(id: 'packaging', name: 'Packaging'),
+      Category(id: 'furniture', name: 'Furniture'),
+      Category(id: 'office-supplies', name: 'Office Supplies'),
+      Category(id: 'hardware', name: 'Hardware'),
+      Category(id: 'software', name: 'Software'),
+      Category(id: 'maintenance', name: 'Maintenance'),
+      Category(id: 'health', name: 'Health'),
+    ];
+
+    for (var cat in defaults) {
+      if (!_categoryBox.containsKey(cat.id)) {
         await _categoryBox.put(cat.id, cat);
       }
     }

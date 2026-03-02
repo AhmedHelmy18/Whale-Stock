@@ -1,4 +1,5 @@
 import 'package:whale_stock/models/product.dart';
+import 'package:whale_stock/models/category.dart';
 
 class AnalyticsService {
   double calculateTotalValue(List<Product> products) {
@@ -15,13 +16,34 @@ class AnalyticsService {
         .toList();
   }
 
-  Map<String, int> calculateCategoryDistribution(List<Product> products) {
+  Map<String, int> calculateCategoryDistribution(
+      List<Product> products, List<Category> categories) {
     final Map<String, int> distribution = {};
+    final Map<String, String> categoryMap = {
+      for (var c in categories) c.id: c.name
+    };
+
     for (var product in products) {
-      distribution[product.categoryId] =
-          (distribution[product.categoryId] ?? 0) + 1;
+      final categoryName =
+          categoryMap[product.categoryId] ?? product.categoryId;
+      distribution[categoryName] = (distribution[categoryName] ?? 0) + 1;
     }
     return distribution;
+  }
+
+  List<double> calculateInventoryGrowth(List<Product> products) {
+    // Since we don't have historical data, we'll create a trend based on total items
+    final total = calculateTotalItems(products).toDouble();
+    if (total == 0) return [0, 0, 0, 0, 0];
+
+    // Mocked trend: last 5 data points leading up to the current total
+    return [
+      total * 0.7,
+      total * 0.85,
+      total * 0.8,
+      total * 0.95,
+      total,
+    ];
   }
 
   Map<String, double> calculateValuationByCategory(List<Product> products) {

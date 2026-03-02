@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:whale_stock/repositories/inventory_repository.dart';
 import 'package:whale_stock/services/analytics_service.dart';
 import 'package:whale_stock/models/product.dart';
@@ -64,6 +64,8 @@ class ReportsViewModel extends ChangeNotifier {
     _supplierDistribution =
         _analyticsService.calculateSupplierDistribution(products);
     _lowStockItems = _analyticsService.getLowStockProducts(products);
-    notifyListeners();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      notifyListeners();
+    });
   }
 }

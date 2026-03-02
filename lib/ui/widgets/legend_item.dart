@@ -27,27 +27,20 @@ class LegendItem extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8),
-          Expanded(
-            flex: 3,
-            child: Text(
-              label,
-              style: const TextStyle(fontSize: 12),
-              overflow: TextOverflow.ellipsis,
-            ),
+          const SizedBox(width: 8),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 12),
           ),
           if (value != null) ...[
-            const SizedBox(width: 4),
-            Flexible(
-              flex: 2,
-              child: Text(
-                value!,
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                ),
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.end,
+            const SizedBox(width: 8),
+            Text(
+              value!,
+              style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
               ),
+              textAlign: TextAlign.end,
             ),
           ],
         ],
