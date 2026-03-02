@@ -62,7 +62,7 @@ class ReportsScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 30),
-              // Valuation per Category
+
               ChartContainer(
                 title: 'Inventory Valuation by Category (\$)',
                 height: 300,
@@ -152,7 +152,7 @@ class ReportsScreen extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Supplier Distribution
+
                   Expanded(
                     child: ChartContainer(
                       title: 'Supplier Distribution (%)',
@@ -186,7 +186,7 @@ class ReportsScreen extends StatelessWidget {
                                         return PieChartSectionData(
                                           value: entry.value,
                                           color: colors[index],
-                                          title: '', // Hide in-chart label
+                                          title: '',
                                           radius: 50,
                                         );
                                       }).toList(),
@@ -232,7 +232,7 @@ class ReportsScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 20),
-                  // Summary Stats or placeholder
+
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.all(20),
@@ -276,7 +276,7 @@ class ReportsScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 30),
-              // Low Stock Alert Details
+
               const Text(
                 'Low Stock Detail Analysis',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),

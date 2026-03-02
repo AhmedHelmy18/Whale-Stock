@@ -9,7 +9,7 @@ class ExcelExportService {
     var excel = Excel.createExcel();
     Sheet sheetObject = excel['Inventory'];
 
-    // Header
+
     sheetObject.appendRow([
       TextCellValue('ID'),
       TextCellValue('Name'),
@@ -18,7 +18,7 @@ class ExcelExportService {
       TextCellValue('Quantity'),
     ]);
 
-    // Data
+
     for (var product in products) {
       sheetObject.appendRow([
         TextCellValue(product.id),

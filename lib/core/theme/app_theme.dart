@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  // Colors from the dashboard design
+
   static const Color background = Color(0xFF19202E);
   static const Color sidebarBackground = Color(0xFF222B3B);
   static const Color cardBackground = Color(0xFF222B3B);
@@ -11,21 +11,21 @@ class AppTheme {
   static const Color alertRed = Color(0xFFEF4444);
   static const Color border = Color(0xFF334155);
 
-  // Additional colors for theme consistency
+
   static const Color success = Color(0xFF05CD99);
   static const Color error = Color(0xFFEE5D50);
 }
 
 class AppColors {
-  // Light Theme
-  static const Color primaryLight = Color(0xFF2E6FF2); // Deep blue
-  static const Color secondaryLight = Color(0xFF1ABC9C); // Turquoise
+
+  static const Color primaryLight = Color(0xFF2E6FF2);
+  static const Color secondaryLight = Color(0xFF1ABC9C);
   static const Color backgroundLight = Color(0xFFF4F7FE);
   static const Color cardLight = Colors.white;
   static const Color textMainLight = Color(0xFF2B3674);
   static const Color textSecondaryLight = Color(0xFFA3AED0);
 
-  // Dark Theme
+
   static const Color primaryDark = AppTheme.primaryTeal;
   static const Color secondaryDark = Color(0xFF00B5D8);
   static const Color backgroundDark = AppTheme.background;

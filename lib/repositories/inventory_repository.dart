@@ -1,6 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:whale_stock/models/product.dart';
 import 'package:whale_stock/models/category.dart';
+import 'package:whale_stock/models/product.g.dart';
 import 'package:whale_stock/models/stock_movement.dart';
 
 class InventoryRepository {
@@ -19,7 +20,6 @@ class InventoryRepository {
     await Hive.openBox<Category>(categoryBoxName);
     await Hive.openBox<StockMovement>(movementBoxName);
 
-    // Initialize default categories if empty
     if (_categoryBox.isEmpty) {
       final defaults = [
         Category(id: 'electronics', name: 'Electronics'),
@@ -38,7 +38,6 @@ class InventoryRepository {
   Box<StockMovement> get _movementBox =>
       Hive.box<StockMovement>(movementBoxName);
 
-  // Product Operations
   List<Product> getProducts() => _productBox.values.toList();
 
   Future<void> addProduct(Product product) async {
@@ -53,14 +52,12 @@ class InventoryRepository {
     await _productBox.delete(id);
   }
 
-  // Category Operations
   List<Category> getCategories() => _categoryBox.values.toList();
 
   Future<void> addCategory(Category category) async {
     await _categoryBox.put(category.id, category);
   }
 
-  // Stock Movement Operations
   List<StockMovement> getMovements() => _movementBox.values.toList();
 
   Future<void> addMovement(StockMovement movement) async {

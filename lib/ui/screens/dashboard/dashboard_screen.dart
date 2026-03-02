@@ -117,7 +117,7 @@ class DashboardScreen extends StatelessWidget {
                                         return PieChartSectionData(
                                           value: entry.value.toDouble(),
                                           color: colors[index],
-                                          title: '', // Hide in-chart label
+                                          title: '',
                                           radius: 50,
                                         );
                                       }).toList(),

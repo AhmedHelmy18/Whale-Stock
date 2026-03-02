@@ -1,7 +1,5 @@
 import 'package:hive/hive.dart';
 
-part 'product.g.dart';
-
 @HiveType(typeId: 1)
 class Product extends HiveObject {
   @HiveField(0)

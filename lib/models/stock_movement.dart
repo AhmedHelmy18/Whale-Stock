@@ -11,7 +11,7 @@ class StockMovement extends HiveObject {
   final String productId;
 
   @HiveField(2)
-  final String type; // 'IN' or 'OUT'
+  final String type;
 
   @HiveField(3)
   final int quantity;

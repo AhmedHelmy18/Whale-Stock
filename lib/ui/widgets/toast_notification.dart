@@ -52,7 +52,7 @@ class _ToastNotificationState extends State<ToastNotification>
 
     _controller.forward();
 
-    // Auto dismiss after 3 seconds
+
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
         _controller.reverse().then((_) => widget.onDismiss());

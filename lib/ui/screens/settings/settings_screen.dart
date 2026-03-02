@@ -26,7 +26,7 @@ class SettingsScreen extends StatelessWidget {
               'System Default',
               Icons.dark_mode_outlined,
               onTap: () {
-                // Future implementation for theme picker
+
                 ToastManager.showInfo(context, 'Theme settings coming soon');
               },
             ),
@@ -154,7 +154,7 @@ class SettingsScreen extends StatelessWidget {
             onPressed: () async {
               await Hive.box('products').clear();
               await Hive.box('stock_movements').clear();
-              // Reload app or navigate to dashboard
+
               if (context.mounted) {
                 Navigator.pop(context);
                 ToastManager.showSuccess(

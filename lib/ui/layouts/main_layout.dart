@@ -37,7 +37,7 @@ class _MainLayoutState extends State<MainLayout> {
       drawer: isDesktop ? null : Drawer(child: sidebarContent),
       body: Row(
         children: [
-          // Sidebar (Desktop)
+
           if (isDesktop)
             Container(
               width: 250,
@@ -45,11 +45,11 @@ class _MainLayoutState extends State<MainLayout> {
               child: sidebarContent,
             ),
 
-          // Main Content Area
+
           Expanded(
             child: Column(
               children: [
-                // Top Header
+
                 Container(
                   height: 80,
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -74,7 +74,7 @@ class _MainLayoutState extends State<MainLayout> {
                         ),
                       ),
                       const SizedBox(width: 16),
-                      // Search Field
+
                       Flexible(
                         child: Container(
                           constraints: const BoxConstraints(maxWidth: 300),
@@ -120,7 +120,7 @@ class _MainLayoutState extends State<MainLayout> {
                   ),
                 ),
 
-                // Actual Screen Content
+
                 Expanded(
                   child: Container(
                     padding: const EdgeInsets.all(30),
